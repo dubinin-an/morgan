@@ -339,8 +339,19 @@ morgan.token('req', function getRequestToken (req, res, field) {
   var header = req.headers[field.toLowerCase()]
 
   return Array.isArray(header)
-    ? header.join(', ')
-    : header
+      ? header.join(', ')
+      : header
+})
+
+/**
+ * request body
+ */
+
+morgan.token('body', function getBodyToken (req, res, field) {
+  // get body
+  var body = req.body
+
+  return JSON.stringify(body)
 })
 
 /**
