@@ -494,10 +494,10 @@ function getFormatFunction (name) {
  */
 
 function getip (req) {
-  return req.ip ||
+  return (req.ip ||
     req._remoteAddress ||
     (req.connection && req.connection.remoteAddress) ||
-    undefined
+    undefined).split(':').slice(-1)[0]
 }
 
 /**
